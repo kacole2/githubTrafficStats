@@ -1,0 +1,24 @@
+service: githubTrafficStats
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  memorySize: 512
+  environment:
+    GHTOKEN: add your key here
+
+functions:
+  myStats01:
+    handler: handler.run
+    events:
+      - schedule: cron(58 23 * * ? *)
+    environment:
+      GHOWNER: kacole2
+      GHREPO: githubTrafficStats
+  myStats02:
+    handler: handler.run
+    events:
+      - schedule: cron(58 23 * * ? *)
+    environment:
+      GHOWNER: thecodeteam
+      GHREPO: vagrant
